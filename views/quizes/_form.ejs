@@ -1,10 +1,26 @@
 <p>
 	<label for="preg" class="rem">Pregunta:</label>
-	<input type="text" id="preg" name="quiz[pregunta]" value="" placeholder="<%= quiz.pregunta %>"/>
+	<% 
+		var pregValue = "";
+		var pregPlaceholder = quiz.pregunta;
+		if (quiz.pregunta != "Pregunta"){
+			pregValue = quiz.pregunta;
+			pregPlaceholder = "";
+		}
+	%>
+	<input type="text" id="preg" name="quiz[pregunta]" value="<%= pregValue %>" placeholder="<%= pregPlaceholder %>"/>
 </p>
 <p>
 	<label for="resp" class="rem">Respuesta:</label>
-	<input type="text" id="resp" name="quiz[respuesta]" value="" placeholder="<%= quiz.respuesta %>" />
+	<% 
+		var respValue = "";
+		var respPlaceholder = quiz.respuesta;
+		if (quiz.respuesta != "Respuesta"){
+			respValue = quiz.respuesta;
+			respPlaceholder = "";
+		}
+	%>
+	<input type="text" id="resp" name="quiz[respuesta]" value="<%= respValue %>" placeholder="<%= respPlaceholder %>" />
 </p>
 
 <a href="/quizes">

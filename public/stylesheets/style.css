@@ -29,5 +29,10 @@ header, nav, section, footer{
 }
 
 nav span{
-	margin-right: 10px;
+	margin: 0 10px 0 0;
+}
+
+#ErrorMsgs{
+	color: #f61;
+	font-size: smaler;
 }
