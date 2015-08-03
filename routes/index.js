@@ -22,7 +22,7 @@ router.delete('/quizes/:quizId(\\d+)', quizController.destroy);
 
 /* GET home page. */
 router.get('/author', function(req, res) {
-  res.render('author', { nombre: 'Manuel Navarro' });
+  res.render('author', { nombre: 'Manuel Navarro', errors: [] });
 });
 
 module.exports = router;

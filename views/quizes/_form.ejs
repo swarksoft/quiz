@@ -23,6 +23,23 @@
 	<input type="text" id="resp" name="quiz[respuesta]" value="<%= respValue %>" placeholder="<%= respPlaceholder %>" />
 </p>
 
+<p>
+	<label for="tematica" class="rem">Temática:</label>
+	<% 
+		var temaValue = "";
+		if (quiz.tematica != ""){
+			temaValue = quiz.tematica;
+		}
+	%>
+	 <select name="quiz[tematica]" id="tematica">
+		<option value="otro" <% if (temaValue === "otro" || temaValue === "") { %>selected <% } %>>Otro</option>
+		<option value="humanidades" <% if (temaValue === "humanidades"){ %>selected <% } %>>Humanidades</option>
+		<option value="ocio" <% if (temaValue === "ocio"){ %>selected <% } %>>Ocio</option>
+		<option value="ciencia" <% if (temaValue === "ciencia"){ %>selected <% } %>>Ciencia</option>
+		<option value="tecnologia" <% if (temaValue === "tecnologia"){ %>selected <% } %>>Tecnología</option>
+	</select>
+</p>
+
 <a href="/quizes">
 	<button type="button">Cancelar</button>
 </a>
