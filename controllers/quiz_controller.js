@@ -29,7 +29,8 @@ exports.answer = function(req, res){
 
 //GET /quizes
 exports.index = function(req, res){
-	models.Quiz.findAll().then(
+	var search = '%'+(req.query.search||"").replace(/ /,'%')+'%';
+	models.Quiz.findAll({where: ["pregunta like ?", search]}).then(
 		function(quizes) {
 		res.render('quizes/index', { quizes: quizes, errors: []});
 	}).catch(function(error) { next(error)})
@@ -91,4 +92,11 @@ exports.destroy = function(req, res){
 	req.quiz.destroy().then(function(){
 		res.redirect('/quizes');
 	}).catch(function(error){next(error)});
+};
+
+//GET /quizes?search=:busqueda
+exports.busqueda = function(req, res){
+	var busqueda = req.busqueda;
+
+	res.render('quizes/busqueda', {busqueda: busqueda, errors: []});
 };
