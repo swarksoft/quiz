@@ -42,6 +42,20 @@ app.use(function(req, res, next) {
 });
 
 
+// Auto log-out (2 minutos)
+app.use(function(req, res, next) {
+    var now = new Date();
+    if (req.session.lastAccess){
+        if ( now.getTime() - req.session.lastAccess > 1000*60*2){
+            delete req.session.user;
+        }
+    }
+    req.session.lastAccess = now.getTime();
+    next();
+});
+
+
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
